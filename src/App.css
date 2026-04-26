@@ -147,7 +147,7 @@ body {
 .key {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5px 6px;
   border-radius: 5px;
   border: 0.5px solid rgba(0, 0, 0, 0.18);
@@ -157,6 +157,10 @@ body {
   min-width: 40px;
   transition: border-color 0.1s, background 0.1s;
   user-select: none;
+}
+
+.key.has-dual {
+  justify-content: space-between;
 }
 
 .key:hover {
