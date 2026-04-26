@@ -33,8 +33,8 @@ const LAYOUT = [
   ],
   [
     {l:'Ctrl',c:'KC_LCTL',w:'w150'},{l:'Win',c:'KC_LGUI',w:'w150'},{l:'Alt',c:'KC_LALT',w:'w150'},
-    {l:'Space',c:'KC_SPC',w:'w625'},{l:'Alt',c:'KC_RALT',w:'w150'},{l:'Fn',c:'KC_FN0',w:'w150'},
-    {l:'Ctrl',c:'KC_RCTL',w:'w150'},{l:'←',c:'KC_LEFT'},{l:'↓',c:'KC_DOWN'},{l:'→',c:'KC_RGHT'},
+    {l:'Space',c:'KC_SPC',w:'w625'},{l:'Alt',c:'KC_RALT'},{l:'Fn',c:'KC_FN0'},
+    {l:'Ctrl',c:'KC_RCTL'},{l:'←',c:'KC_LEFT'},{l:'↓',c:'KC_DOWN'},{l:'→',c:'KC_RGHT'},
   ],
 ]
 
