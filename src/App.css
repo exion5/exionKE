@@ -147,7 +147,7 @@ body {
 .key {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 5px 6px;
   border-radius: 5px;
   border: 0.5px solid rgba(0, 0, 0, 0.18);
@@ -161,6 +161,11 @@ body {
 
 .key.has-dual {
   justify-content: space-between;
+}
+
+.key-shift-empty {
+  height: 10px;
+  visibility: hidden;
 }
 
 .key:hover {
