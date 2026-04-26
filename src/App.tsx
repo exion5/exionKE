@@ -17,17 +17,17 @@ const LAYOUT = [
   [
     {l:'Caps',c:'KC_CAPS',w:'w175'},{l:'A',c:'KC_A'},{l:'S',c:'KC_S'},{l:'D',c:'KC_D'},
     {l:'F',c:'KC_F'},{l:'G',c:'KC_G'},{l:'H',c:'KC_H'},{l:'J',c:'KC_J'},{l:'K',c:'KC_K'},
-    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w250'},{l:'PgU',c:'KC_PGUP'},
+    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w238'},{l:'PgU',c:'KC_PGUP'},
   ],
   [
-    {l:'Shift',c:'KC_LSFT',w:'w250'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
+    {l:'Shift',c:'KC_LSFT',w:'w238'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
     {l:'V',c:'KC_V'},{l:'B',c:'KC_B'},{l:'N',c:'KC_N'},{l:'M',c:'KC_M'},
     {l:',',c:'KC_COMM'},{l:'.',c:'KC_DOT'},{l:'/',c:'KC_SLSH'},
     {l:'Shift',c:'KC_RSFT',w:'w175'},{l:'↑',c:'KC_UP'},{l:'PgD',c:'KC_PGDN'},
   ],
   [
     {l:'Ctrl',c:'KC_LCTL',w:'w125'},{l:'Win',c:'KC_LGUI',w:'w125'},{l:'Alt',c:'KC_LALT',w:'w125'},
-    {l:'Space',c:'KC_SPC',w:'w700'},{l:'Alt',c:'KC_RALT'},{l:'Fn',c:'KC_FN0'},
+    {l:'Space',c:'KC_SPC',w:'w675'},{l:'Alt',c:'KC_RALT'},{l:'Fn',c:'KC_FN0'},
     {l:'Ctrl',c:'KC_RCTL'},{l:'←',c:'KC_LEFT'},{l:'↓',c:'KC_DOWN'},{l:'→',c:'KC_RGHT'},
   ],
 ]
