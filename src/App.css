@@ -154,7 +154,7 @@ body {
   background: #f5f4f1;
   cursor: pointer;
   height: 40px;
-  min-width: 36px;
+  min-width: 40px;
   transition: border-color 0.1s, background 0.1s;
   user-select: none;
 }
