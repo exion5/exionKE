@@ -178,8 +178,6 @@ body {
   font-weight: 500;
   color: #1a1a1a;
   line-height: 1;
-  margin-top: auto;
-  margin-bottom: auto;
 }
 
 .key-shift {
@@ -369,6 +367,17 @@ body {
 .kc-tab:hover:not(.active) {
   color: #1a1a1a;
   border-color: rgba(0,0,0,0.35);
+}
+
+.kc-search-row {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.kc-back {
+  padding: 5px 8px;
+  flex-shrink: 0;
 }
 
 /* Dark mode */
