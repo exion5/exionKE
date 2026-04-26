@@ -3,31 +3,31 @@ import './App.css'
 
 const LAYOUT = [
   [
-    {l:'`',c:'KC_GRV'},{l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
+    {l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
     {l:'5',c:'KC_5'},{l:'6',c:'KC_6'},{l:'7',c:'KC_7'},{l:'8',c:'KC_8'},{l:'9',c:'KC_9'},
     {l:'0',c:'KC_0'},{l:'-',c:'KC_MINS'},{l:'=',c:'KC_EQL'},
-    {l:'Bksp',c:'KC_BSPC',w:'w200'},{l:'Ins',c:'KC_INS'},{l:'Hm',c:'KC_HOME'},{l:'PgU',c:'KC_PGUP'},
+    {l:'Bksp',c:'KC_BSPC',w:'w200'},{l:'`',c:'KC_GRV'},
   ],
   [
     {l:'Tab',c:'KC_TAB',w:'w150'},{l:'Q',c:'KC_Q'},{l:'W',c:'KC_W'},{l:'E',c:'KC_E'},
     {l:'R',c:'KC_R'},{l:'T',c:'KC_T'},{l:'Y',c:'KC_Y'},{l:'U',c:'KC_U'},{l:'I',c:'KC_I'},
     {l:'O',c:'KC_O'},{l:'P',c:'KC_P'},{l:'[',c:'KC_LBRC'},{l:']',c:'KC_RBRC'},
-    {l:'\\',c:'KC_BSLS',w:'w150'},{l:'Del',c:'KC_DEL'},{l:'End',c:'KC_END'},{l:'PgD',c:'KC_PGDN'},
+    {l:'\\',c:'KC_BSLS',w:'w150'},{l:'Del',c:'KC_DEL'},
   ],
   [
     {l:'Caps',c:'KC_CAPS',w:'w175'},{l:'A',c:'KC_A'},{l:'S',c:'KC_S'},{l:'D',c:'KC_D'},
     {l:'F',c:'KC_F'},{l:'G',c:'KC_G'},{l:'H',c:'KC_H'},{l:'J',c:'KC_J'},{l:'K',c:'KC_K'},
-    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Ent',c:'KC_ENT',w:'w225'},
+    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w225'},{l:'PgU',c:'KC_PGUP'},
   ],
   [
     {l:'Shift',c:'KC_LSFT',w:'w225'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
     {l:'V',c:'KC_V'},{l:'B',c:'KC_B'},{l:'N',c:'KC_N'},{l:'M',c:'KC_M'},
     {l:',',c:'KC_COMM'},{l:'.',c:'KC_DOT'},{l:'/',c:'KC_SLSH'},
-    {l:'Shift',c:'KC_RSFT',w:'w175'},{l:'↑',c:'KC_UP'},
+    {l:'Shift',c:'KC_RSFT',w:'w175'},{l:'↑',c:'KC_UP'},{l:'PgD',c:'KC_PGDN'},
   ],
   [
     {l:'Ctrl',c:'KC_LCTL',w:'w125'},{l:'Win',c:'KC_LGUI',w:'w125'},{l:'Alt',c:'KC_LALT',w:'w125'},
-    {l:'Space',c:'KC_SPC',w:'w625'},{l:'Alt',c:'KC_RALT'},{l:'Fn',c:'KC_FN0'},
+    {l:'Space',c:'KC_SPC',w:'w700'},{l:'Alt',c:'KC_RALT'},{l:'Fn',c:'KC_FN0'},
     {l:'Ctrl',c:'KC_RCTL'},{l:'←',c:'KC_LEFT'},{l:'↓',c:'KC_DOWN'},{l:'→',c:'KC_RGHT'},
   ],
 ]
@@ -52,7 +52,7 @@ const KEYCODES = [
   {l:'F9',c:'KC_F9'},{l:'F10',c:'KC_F10'},{l:'F11',c:'KC_F11'},{l:'F12',c:'KC_F12'},
   {l:'Vol Up',c:'KC_VOLU'},{l:'Vol Down',c:'KC_VOLD'},{l:'Mute',c:'KC_MUTE'},
   {l:'Play/Pause',c:'KC_MPLY'},{l:'Next Track',c:'KC_MNXT'},{l:'Prev Track',c:'KC_MPRV'},
-  {l:'No Op',c:'KC_NO'},{l:'Transparent',c:'KC_TRNS'},
+  {l:'No Op',c:'KC_NO'},{l:'Transparent',c:'KC_TRNS'},{l:'Del',c:'KC_DEL'},
 ]
 
 type KeyDef = { l: string; c: string; w?: string }
