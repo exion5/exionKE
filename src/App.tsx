@@ -3,7 +3,7 @@ import './App.css'
 
 const LAYOUT = [
   [
-    {l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
+    {l:'Esc',c:'KC_ESC'},{l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
     {l:'5',c:'KC_5'},{l:'6',c:'KC_6'},{l:'7',c:'KC_7'},{l:'8',c:'KC_8'},{l:'9',c:'KC_9'},
     {l:'0',c:'KC_0'},{l:'-',c:'KC_MINS'},{l:'=',c:'KC_EQL'},
     {l:'Bksp',c:'KC_BSPC',w:'w200'},{l:'`',c:'KC_GRV'},
@@ -17,10 +17,10 @@ const LAYOUT = [
   [
     {l:'Caps',c:'KC_CAPS',w:'w175'},{l:'A',c:'KC_A'},{l:'S',c:'KC_S'},{l:'D',c:'KC_D'},
     {l:'F',c:'KC_F'},{l:'G',c:'KC_G'},{l:'H',c:'KC_H'},{l:'J',c:'KC_J'},{l:'K',c:'KC_K'},
-    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w225'},{l:'PgU',c:'KC_PGUP'},
+    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w250'},{l:'PgU',c:'KC_PGUP'},
   ],
   [
-    {l:'Shift',c:'KC_LSFT',w:'w225'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
+    {l:'Shift',c:'KC_LSFT',w:'w250'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
     {l:'V',c:'KC_V'},{l:'B',c:'KC_B'},{l:'N',c:'KC_N'},{l:'M',c:'KC_M'},
     {l:',',c:'KC_COMM'},{l:'.',c:'KC_DOT'},{l:'/',c:'KC_SLSH'},
     {l:'Shift',c:'KC_RSFT',w:'w175'},{l:'↑',c:'KC_UP'},{l:'PgD',c:'KC_PGDN'},
@@ -52,7 +52,7 @@ const KEYCODES = [
   {l:'F9',c:'KC_F9'},{l:'F10',c:'KC_F10'},{l:'F11',c:'KC_F11'},{l:'F12',c:'KC_F12'},
   {l:'Vol Up',c:'KC_VOLU'},{l:'Vol Down',c:'KC_VOLD'},{l:'Mute',c:'KC_MUTE'},
   {l:'Play/Pause',c:'KC_MPLY'},{l:'Next Track',c:'KC_MNXT'},{l:'Prev Track',c:'KC_MPRV'},
-  {l:'No Op',c:'KC_NO'},{l:'Transparent',c:'KC_TRNS'},{l:'Del',c:'KC_DEL'},
+  {l:'No Op',c:'KC_NO'},{l:'Transparent',c:'KC_TRNS'},{l:'Delete',c:'KC_DEL'},
 ]
 
 type KeyDef = { l: string; c: string; w?: string }
