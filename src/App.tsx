@@ -128,7 +128,7 @@ type Keymap = {
   }
 }
 
-const LAYERS = ['0 — base', '1 — fn', '2 — media']
+const LAYERS = ['0 — Base', '1 — Fn', '2 — Media']
 
 export default function App() {
   const [activeLayer, setActiveLayer] = useState(0)
@@ -163,11 +163,11 @@ export default function App() {
     <div className="app">
       {/* Top bar */}
       <div className="topbar">
-        <div className="logo">exion<span>KE</span></div>
+        <div className="logo">Exion<span> Keyboard Editor</span></div>
         <div className="top-actions">
-          <button className="btn">import layout</button>
-          <button className="btn">save keymap</button>
-          <button className="btn primary">⚡ flash</button>
+          <button className="btn">Import Layout</button>
+          <button className="btn">Save Keymap</button>
+          <button className="btn primary">⚡ Flash</button>
         </div>
       </div>
 
@@ -183,7 +183,7 @@ export default function App() {
             {name}
           </button>
         ))}
-        <button className="layer-tab">+ add</button>
+        <button className="layer-tab">+ Add</button>
       </div>
 
       {/* Main area */}
@@ -202,6 +202,7 @@ export default function App() {
                       onClick={() => setSelected({ rowIndex: ri, keyIndex: ki })}
                     >
                       <div className="key-shift">{key.s}</div>
+                      {key.s && <div className="key-shift">{key.s}</div>}
                       <div className={`key-main${key.s ? ' has-shift' : ''}`}>{key.l}</div>
                     </div>
                   )
@@ -265,9 +266,9 @@ export default function App() {
 
       {/* Status bar */}
       <div className="status-bar">
-        <span><span className="status-dot" />tkl — 87 keys</span>
-        <span>layer {activeLayer} active</span>
-        <span>no device connected</span>
+        <span><span className="status-dot" />TKL — 87 Keys</span>
+        <span>Layer {activeLayer} Active</span>
+        <span>No Device Connected</span>
       </div>
     </div>
   )
