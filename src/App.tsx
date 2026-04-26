@@ -89,6 +89,34 @@ const KEYCODES = [
   {l:'Debug',c:'DB_TOGG'},{l:'EEPROM Reset',c:'EE_CLR'},
 ]
 
+const TABS = [
+  { id: 'letters', label: 'ABC' },
+  { id: 'numbers', label: '123' },
+  { id: 'symbols', label: '!@#' },
+  { id: 'modifiers', label: 'Modifiers' },
+  { id: 'navigation', label: 'Navigation' },
+  { id: 'function', label: 'Function' },
+  { id: 'numpad', label: 'Number Pad' },
+  { id: 'media', label: 'Media' },
+  { id: 'mouse', label: 'Mouse' },
+  { id: 'system', label: 'System' },
+  { id: 'special', label: 'QMK' },
+]
+
+const KEYCODE_MAP: Record<string, typeof KEYCODES> = {
+  letters: KEYCODES.filter(k => /^KC_[A-Z]$/.test(k.c)),
+  numbers: KEYCODES.filter(k => /^KC_[0-9]$/.test(k.c)),
+  symbols: KEYCODES.filter(k => ['KC_MINS','KC_EQL','KC_LBRC','KC_RBRC','KC_BSLS','KC_SCLN','KC_QUOT','KC_GRV','KC_COMM','KC_DOT','KC_SLSH'].includes(k.c)),
+  modifiers: KEYCODES.filter(k => ['KC_LSFT','KC_RSFT','KC_LCTL','KC_RCTL','KC_LALT','KC_RALT','KC_LGUI','KC_RGUI','KC_CAPS'].includes(k.c)),
+  navigation: KEYCODES.filter(k => ['KC_UP','KC_DOWN','KC_LEFT','KC_RGHT','KC_HOME','KC_END','KC_PGUP','KC_PGDN','KC_INS','KC_DEL','KC_PSCR','KC_SCRL','KC_PAUS','KC_NUM'].includes(k.c)),
+  function: KEYCODES.filter(k => /^KC_F\d+$/.test(k.c)),
+  numpad: KEYCODES.filter(k => /^KC_P/.test(k.c)),
+  media: KEYCODES.filter(k => ['KC_VOLU','KC_VOLD','KC_MUTE','KC_MPLY','KC_MNXT','KC_MPRV','KC_MSTP','KC_MSEL','KC_EJCT'].includes(k.c)),
+  mouse: KEYCODES.filter(k => k.c.startsWith('KC_BTN') || k.c.startsWith('KC_MS') || k.c.startsWith('KC_WH')),
+  system: KEYCODES.filter(k => ['KC_PWR','KC_SLEP','KC_WAKE','KC_CALC','KC_MAIL','KC_WHOM','KC_WBAK','KC_WFWD','KC_WREF'].includes(k.c)),
+  special: KEYCODES.filter(k => ['KC_NO','KC_TRNS','QK_BOOT','DB_TOGG','EE_CLR'].includes(k.c)),
+}
+
 type KeyDef = { l: string; c: string; w?: string; s?: string }
 type SelectedKey = { rowIndex: number; keyIndex: number }
 
@@ -104,6 +132,7 @@ const LAYERS = ['0 — base', '1 — fn', '2 — media']
 
 export default function App() {
   const [activeLayer, setActiveLayer] = useState(0)
+  const [activeTab, setActiveTab] = useState('letters')
   const [selected, setSelected] = useState<SelectedKey | null>(null)
   const [search, setSearch] = useState('')
   const [keymap, setKeymap] = useState<Keymap>({})
@@ -129,13 +158,6 @@ export default function App() {
   }
 
   const selectedKey = selected ? getKey(activeLayer, selected.rowIndex, selected.keyIndex) : null
-
-  const filteredKeycodes = search
-    ? KEYCODES.filter(k =>
-        k.l.toLowerCase().includes(search.toLowerCase()) ||
-        k.c.toLowerCase().includes(search.toLowerCase())
-      )
-    : KEYCODES
 
   return (
     <div className="app">
@@ -180,7 +202,7 @@ export default function App() {
                       onClick={() => setSelected({ rowIndex: ri, keyIndex: ki })}
                     >
                       <div className="key-shift">{key.s}</div>
-                      <div className="key-main">{key.l}</div>
+                      <div className={`key-main${key.s ? ' has-shift' : ''}`}>{key.l}</div>
                     </div>
                   )
                 })}
@@ -206,19 +228,32 @@ export default function App() {
 
           <div className="sidebar-section sidebar-keycodes">
             <div className="sidebar-title">ASSIGN KEYCODE</div>
-            <input
-              className="kc-search"
-              placeholder="search..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-            />
-            <div className="keycode-list">
-              {filteredKeycodes.map((k, i) => (
-                <div
-                  key={i}
-                  className="keycode-item"
-                  onClick={() => assignKeycode(k.l, k.c)}
+            <div className="kc-tabs">
+              {TABS.map(t => (
+                <button
+                  key={t.id}
+                  className={`kc-tab${activeTab === t.id ? ' active' : ''}`}
+                  onClick={() => { setActiveTab(t.id); setSearch('') }}
                 >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+            <div className="kc-search-row">
+              <input
+                className="kc-search"
+                placeholder="search..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+              />
+              <button className="btn kc-back" onClick={() => { setSearch(''); setActiveTab('letters') }}>←</button>
+            </div>
+            <div className="keycode-list">
+              {(search ? KEYCODES.filter(k =>
+                k.l.toLowerCase().includes(search.toLowerCase()) ||
+                k.c.toLowerCase().includes(search.toLowerCase())
+              ) : KEYCODE_MAP[activeTab] ?? []).map((k, i) => (
+                <div key={i} className="keycode-item" onClick={() => assignKeycode(k.l, k.c)}>
                   <span className="kc-label">{k.l}</span>
                   <span className="kc-code">{k.c}</span>
                 </div>
