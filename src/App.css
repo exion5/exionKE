@@ -181,12 +181,13 @@ body {
 }
 
 /* Key widths */
-.key.w150 { min-width: 56px; }
-.key.w175 { min-width: 64px; }
-.key.w200 { min-width: 74px; }
-.key.w225 { min-width: 82px; }
-.key.w275 { min-width: 100px; }
-.key.w625 { min-width: 228px; }
+.key.w125 { min-width: 50px; }
+.key.w150 { min-width: 60px; }
+.key.w175 { min-width: 70px; }
+.key.w200 { min-width: 80px; }
+.key.w225 { min-width: 90px; }
+.key.w275 { min-width: 110px; }
+.key.w625 { min-width: 250px; }
 
 /* Sidebar */
 .sidebar {
