@@ -201,7 +201,6 @@ export default function App() {
                       className={`key${key.w ? ' ' + key.w : ''}${isSelected ? ' selected' : ''}`}
                       onClick={() => setSelected({ rowIndex: ri, keyIndex: ki })}
                     >
-                      <div className="key-shift">{key.s}</div>
                       {key.s && <div className="key-shift">{key.s}</div>}
                       <div className={`key-main${key.s ? ' has-shift' : ''}`}>{key.l}</div>
                     </div>
