@@ -3,12 +3,6 @@ import './App.css'
 
 const LAYOUT = [
   [
-    {l:'Esc',c:'KC_ESC'},{l:'F1',c:'KC_F1'},{l:'F2',c:'KC_F2'},{l:'F3',c:'KC_F3'},
-    {l:'F4',c:'KC_F4'},{l:'F5',c:'KC_F5'},{l:'F6',c:'KC_F6'},{l:'F7',c:'KC_F7'},
-    {l:'F8',c:'KC_F8'},{l:'F9',c:'KC_F9'},{l:'F10',c:'KC_F10'},{l:'F11',c:'KC_F11'},
-    {l:'F12',c:'KC_F12'},{l:'Prt',c:'KC_PSCR'},{l:'Scr',c:'KC_SCRL'},{l:'Pse',c:'KC_PAUS'},
-  ],
-  [
     {l:'`',c:'KC_GRV'},{l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
     {l:'5',c:'KC_5'},{l:'6',c:'KC_6'},{l:'7',c:'KC_7'},{l:'8',c:'KC_8'},{l:'9',c:'KC_9'},
     {l:'0',c:'KC_0'},{l:'-',c:'KC_MINS'},{l:'=',c:'KC_EQL'},
@@ -29,10 +23,10 @@ const LAYOUT = [
     {l:'Shift',c:'KC_LSFT',w:'w225'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
     {l:'V',c:'KC_V'},{l:'B',c:'KC_B'},{l:'N',c:'KC_N'},{l:'M',c:'KC_M'},
     {l:',',c:'KC_COMM'},{l:'.',c:'KC_DOT'},{l:'/',c:'KC_SLSH'},
-    {l:'Shift',c:'KC_RSFT',w:'w275'},{l:'↑',c:'KC_UP'},
+    {l:'Shift',c:'KC_RSFT',w:'w175'},{l:'↑',c:'KC_UP'},
   ],
   [
-    {l:'Ctrl',c:'KC_LCTL',w:'w150'},{l:'Win',c:'KC_LGUI',w:'w150'},{l:'Alt',c:'KC_LALT',w:'w150'},
+    {l:'Ctrl',c:'KC_LCTL',w:'w125'},{l:'Win',c:'KC_LGUI',w:'w125'},{l:'Alt',c:'KC_LALT',w:'w125'},
     {l:'Space',c:'KC_SPC',w:'w625'},{l:'Alt',c:'KC_RALT'},{l:'Fn',c:'KC_FN0'},
     {l:'Ctrl',c:'KC_RCTL'},{l:'←',c:'KC_LEFT'},{l:'↓',c:'KC_DOWN'},{l:'→',c:'KC_RGHT'},
   ],
