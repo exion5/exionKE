@@ -3,26 +3,26 @@ import './App.css'
 
 const LAYOUT = [
   [
-    {l:'Esc',c:'KC_ESC'},{l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
-    {l:'5',c:'KC_5'},{l:'6',c:'KC_6'},{l:'7',c:'KC_7'},{l:'8',c:'KC_8'},{l:'9',c:'KC_9'},
-    {l:'0',c:'KC_0'},{l:'-',c:'KC_MINS'},{l:'=',c:'KC_EQL'},
-    {l:'Bksp',c:'KC_BSPC',w:'w200'},{l:'`',c:'KC_GRV'},
+    {l:'Esc',c:'KC_ESC'},{l:'1',s:'!',c:'KC_1'},{l:'2',s:'@',c:'KC_2'},{l:'3',s:'#',c:'KC_3'},{l:'4',s:'$',c:'KC_4'},
+    {l:'5',s:'%',c:'KC_5'},{l:'6',s:'^',c:'KC_6'},{l:'7',s:'&',c:'KC_7'},{l:'8',s:'*',c:'KC_8'},{l:'9',s:'(',c:'KC_9'},
+    {l:'0',s:')',c:'KC_0'},{l:'-',s:'_',c:'KC_MINS'},{l:'=',s:'+',c:'KC_EQL'},
+    {l:'Bksp',c:'KC_BSPC',w:'w200'},{l:'`',s:'~',c:'KC_GRV'},
   ],
   [
     {l:'Tab',c:'KC_TAB',w:'w150'},{l:'Q',c:'KC_Q'},{l:'W',c:'KC_W'},{l:'E',c:'KC_E'},
     {l:'R',c:'KC_R'},{l:'T',c:'KC_T'},{l:'Y',c:'KC_Y'},{l:'U',c:'KC_U'},{l:'I',c:'KC_I'},
-    {l:'O',c:'KC_O'},{l:'P',c:'KC_P'},{l:'[',c:'KC_LBRC'},{l:']',c:'KC_RBRC'},
-    {l:'\\',c:'KC_BSLS',w:'w150'},{l:'Del',c:'KC_DEL'},
+    {l:'O',c:'KC_O'},{l:'P',c:'KC_P'},{l:'[',s:'{',c:'KC_LBRC'},{l:']',s:'}',c:'KC_RBRC'},
+    {l:'\\',s:'|',c:'KC_BSLS',w:'w150'},{l:'Del',c:'KC_DEL'},
   ],
   [
     {l:'Caps',c:'KC_CAPS',w:'w175'},{l:'A',c:'KC_A'},{l:'S',c:'KC_S'},{l:'D',c:'KC_D'},
     {l:'F',c:'KC_F'},{l:'G',c:'KC_G'},{l:'H',c:'KC_H'},{l:'J',c:'KC_J'},{l:'K',c:'KC_K'},
-    {l:'L',c:'KC_L'},{l:';',c:'KC_SCLN'},{l:"'",c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w235'},{l:'PgU',c:'KC_PGUP'},
+    {l:'L',c:'KC_L'},{l:';',s:':',c:'KC_SCLN'},{l:"'",s:'"',c:'KC_QUOT'},{l:'Enter',c:'KC_ENT',w:'w235'},{l:'PgU',c:'KC_PGUP'},
   ],
   [
     {l:'Shift',c:'KC_LSFT',w:'w235'},{l:'Z',c:'KC_Z'},{l:'X',c:'KC_X'},{l:'C',c:'KC_C'},
     {l:'V',c:'KC_V'},{l:'B',c:'KC_B'},{l:'N',c:'KC_N'},{l:'M',c:'KC_M'},
-    {l:',',c:'KC_COMM'},{l:'.',c:'KC_DOT'},{l:'/',c:'KC_SLSH'},
+    {l:',',s:'<',c:'KC_COMM'},{l:'.',s:'>',c:'KC_DOT'},{l:'/',s:'?',c:'KC_SLSH'},
     {l:'Shift',c:'KC_RSFT',w:'w175'},{l:'↑',c:'KC_UP'},{l:'PgD',c:'KC_PGDN'},
   ],
   [
@@ -38,24 +38,58 @@ const KEYCODES = [
   {l:'K',c:'KC_K'},{l:'L',c:'KC_L'},{l:'M',c:'KC_M'},{l:'N',c:'KC_N'},{l:'O',c:'KC_O'},
   {l:'P',c:'KC_P'},{l:'Q',c:'KC_Q'},{l:'R',c:'KC_R'},{l:'S',c:'KC_S'},{l:'T',c:'KC_T'},
   {l:'U',c:'KC_U'},{l:'V',c:'KC_V'},{l:'W',c:'KC_W'},{l:'X',c:'KC_X'},{l:'Y',c:'KC_Y'},
-  {l:'Z',c:'KC_Z'},{l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},
-  {l:'5',c:'KC_5'},{l:'6',c:'KC_6'},{l:'7',c:'KC_7'},{l:'8',c:'KC_8'},{l:'9',c:'KC_9'},
-  {l:'0',c:'KC_0'},{l:'Enter',c:'KC_ENT'},{l:'Escape',c:'KC_ESC'},{l:'Backspace',c:'KC_BSPC'},
-  {l:'Tab',c:'KC_TAB'},{l:'Space',c:'KC_SPC'},{l:'Caps Lock',c:'KC_CAPS'},
-  {l:'Left Shift',c:'KC_LSFT'},{l:'Right Shift',c:'KC_RSFT'},
+  {l:'Z',c:'KC_Z'},
+
+  {l:'1',c:'KC_1'},{l:'2',c:'KC_2'},{l:'3',c:'KC_3'},{l:'4',c:'KC_4'},{l:'5',c:'KC_5'},
+  {l:'6',c:'KC_6'},{l:'7',c:'KC_7'},{l:'8',c:'KC_8'},{l:'9',c:'KC_9'},{l:'0',c:'KC_0'},
+
+  {l:'Enter',c:'KC_ENT'},{l:'Escape',c:'KC_ESC'},{l:'Backspace',c:'KC_BSPC'},
+  {l:'Tab',c:'KC_TAB'},{l:'Space',c:'KC_SPC'},{l:'Delete',c:'KC_DEL'},
+  {l:'Minus -',c:'KC_MINS'},{l:'Equal =',c:'KC_EQL'},{l:'Left Bracket [',c:'KC_LBRC'},
+  {l:'Right Bracket ]',c:'KC_RBRC'},{l:'Backslash \\',c:'KC_BSLS'},
+  {l:'Semicolon ;',c:'KC_SCLN'},{l:'Quote \'',c:'KC_QUOT'},{l:'Grave `',c:'KC_GRV'},
+  {l:'Comma ,',c:'KC_COMM'},{l:'Period .',c:'KC_DOT'},{l:'Slash /',c:'KC_SLSH'},
+
+  {l:'Caps Lock',c:'KC_CAPS'},{l:'Left Shift',c:'KC_LSFT'},{l:'Right Shift',c:'KC_RSFT'},
   {l:'Left Ctrl',c:'KC_LCTL'},{l:'Right Ctrl',c:'KC_RCTL'},
   {l:'Left Alt',c:'KC_LALT'},{l:'Right Alt',c:'KC_RALT'},
   {l:'Left GUI',c:'KC_LGUI'},{l:'Right GUI',c:'KC_RGUI'},
+
   {l:'Up',c:'KC_UP'},{l:'Down',c:'KC_DOWN'},{l:'Left',c:'KC_LEFT'},{l:'Right',c:'KC_RGHT'},
+  {l:'Home',c:'KC_HOME'},{l:'End',c:'KC_END'},{l:'Page Up',c:'KC_PGUP'},{l:'Page Down',c:'KC_PGDN'},
+  {l:'Insert',c:'KC_INS'},{l:'Print Screen',c:'KC_PSCR'},{l:'Scroll Lock',c:'KC_SCRL'},
+  {l:'Pause',c:'KC_PAUS'},{l:'Num Lock',c:'KC_NUM'},
+
   {l:'F1',c:'KC_F1'},{l:'F2',c:'KC_F2'},{l:'F3',c:'KC_F3'},{l:'F4',c:'KC_F4'},
   {l:'F5',c:'KC_F5'},{l:'F6',c:'KC_F6'},{l:'F7',c:'KC_F7'},{l:'F8',c:'KC_F8'},
   {l:'F9',c:'KC_F9'},{l:'F10',c:'KC_F10'},{l:'F11',c:'KC_F11'},{l:'F12',c:'KC_F12'},
+  {l:'F13',c:'KC_F13'},{l:'F14',c:'KC_F14'},{l:'F15',c:'KC_F15'},{l:'F16',c:'KC_F16'},
+  {l:'F17',c:'KC_F17'},{l:'F18',c:'KC_F18'},{l:'F19',c:'KC_F19'},{l:'F20',c:'KC_F20'},
+  {l:'F21',c:'KC_F21'},{l:'F22',c:'KC_F22'},{l:'F23',c:'KC_F23'},{l:'F24',c:'KC_F24'},
+
+  {l:'Num 0',c:'KC_P0'},{l:'Num 1',c:'KC_P1'},{l:'Num 2',c:'KC_P2'},{l:'Num 3',c:'KC_P3'},
+  {l:'Num 4',c:'KC_P4'},{l:'Num 5',c:'KC_P5'},{l:'Num 6',c:'KC_P6'},{l:'Num 7',c:'KC_P7'},
+  {l:'Num 8',c:'KC_P8'},{l:'Num 9',c:'KC_P9'},{l:'Num .',c:'KC_PDOT'},{l:'Num +',c:'KC_PPLS'},
+  {l:'Num -',c:'KC_PMNS'},{l:'Num *',c:'KC_PAST'},{l:'Num /',c:'KC_PSLS'},{l:'Num Enter',c:'KC_PENT'},
+  {l:'Num =',c:'KC_PEQL'},
+
   {l:'Vol Up',c:'KC_VOLU'},{l:'Vol Down',c:'KC_VOLD'},{l:'Mute',c:'KC_MUTE'},
   {l:'Play/Pause',c:'KC_MPLY'},{l:'Next Track',c:'KC_MNXT'},{l:'Prev Track',c:'KC_MPRV'},
-  {l:'No Op',c:'KC_NO'},{l:'Transparent',c:'KC_TRNS'},{l:'Delete',c:'KC_DEL'},
+  {l:'Stop',c:'KC_MSTP'},{l:'Media Select',c:'KC_MSEL'},{l:'Eject',c:'KC_EJCT'},
+
+  {l:'Mouse Btn 1',c:'KC_BTN1'},{l:'Mouse Btn 2',c:'KC_BTN2'},{l:'Mouse Btn 3',c:'KC_BTN3'},
+  {l:'Mouse Up',c:'KC_MS_U'},{l:'Mouse Down',c:'KC_MS_D'},{l:'Mouse Left',c:'KC_MS_L'},
+  {l:'Mouse Right',c:'KC_MS_R'},{l:'Mouse Whl Up',c:'KC_WH_U'},{l:'Mouse Whl Down',c:'KC_WH_D'},
+
+  {l:'Power',c:'KC_PWR'},{l:'Sleep',c:'KC_SLEP'},{l:'Wake',c:'KC_WAKE'},
+  {l:'Calculator',c:'KC_CALC'},{l:'Mail',c:'KC_MAIL'},{l:'Browser Home',c:'KC_WHOM'},
+  {l:'Browser Back',c:'KC_WBAK'},{l:'Browser Fwd',c:'KC_WFWD'},{l:'Browser Refresh',c:'KC_WREF'},
+
+  {l:'No Op',c:'KC_NO'},{l:'Transparent',c:'KC_TRNS'},{l:'Reset',c:'QK_BOOT'},
+  {l:'Debug',c:'DB_TOGG'},{l:'EEPROM Reset',c:'EE_CLR'},
 ]
 
-type KeyDef = { l: string; c: string; w?: string }
+type KeyDef = { l: string; c: string; w?: string; s?: string }
 type SelectedKey = { rowIndex: number; keyIndex: number }
 
 type Keymap = {
@@ -145,6 +179,7 @@ export default function App() {
                       className={`key${key.w ? ' ' + key.w : ''}${isSelected ? ' selected' : ''}`}
                       onClick={() => setSelected({ rowIndex: ri, keyIndex: ki })}
                     >
+                      <div className="key-shift">{key.s}</div>
                       <div className="key-main">{key.l}</div>
                     </div>
                   )
