@@ -413,3 +413,38 @@ body {
   .kc-label { color: #e8e6e0; }
   .logo { color: #e8e6e0; }
 }
+
+.edit-remove {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 10px;
+  cursor: pointer;
+  padding: 1px 3px;
+  line-height: 1;
+}
+
+.edit-width {
+  font-size: 10px;
+  color: #aaa;
+  cursor: pointer;
+  text-align: center;
+  margin-top: auto;
+}
+
+.edit-row-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 6px;
+  justify-content: center;
+}
+
+.edit-add-row {
+  margin-top: 10px;
+  text-align: center;
+}

@@ -120,6 +120,8 @@ const KEYCODE_MAP: Record<string, typeof KEYCODES> = {
 
 type KeyDef = { l: string; c: string; w?: string; s?: string }
 type SelectedKey = { rowIndex: number; keyIndex: number }
+type LayoutKey = { l: string; c: string; w?: string; s?: string }
+type CustomLayout = LayoutKey[][]
 
 type Keymap = {
   [layer: number]: {
@@ -138,6 +140,10 @@ export default function App() {
   const [search, setSearch] = useState('')
   const [keymap, setKeymap] = useState<Keymap>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const [customLayout, setCustomLayout] = useState<CustomLayout>(
+    LAYOUT.map(row => row.map(k => ({ ...k })))
+  )
+  const [editMode, setEditMode] = useState(false)
 
   function getKey(layer: number, ri: number, ki: number): KeyDef {
     return keymap[layer]?.[ri]?.[ki] ?? LAYOUT[ri][ki]
@@ -159,6 +165,42 @@ export default function App() {
     }))
   }
 
+  function addKey(ri: number) {
+    setCustomLayout(prev => {
+      const next = prev.map(r => [...r])
+      next[ri] = [...next[ri], { l: 'KC_NO', c: 'KC_NO' }]
+      return next
+    })
+  }
+
+  function removeKey(ri: number, ki: number) {
+    setCustomLayout(prev => {
+      const next = prev.map(r => [...r])
+      next[ri] = next[ri].filter((_, i) => i !== ki)
+      return next
+    })
+  }
+
+  function addRow() {
+    setCustomLayout(prev => [...prev, [{ l: 'KC_NO', c: 'KC_NO' }]])
+  }
+
+  function removeRow(ri: number) {
+    setCustomLayout(prev => prev.filter((_, i) => i !== ri))
+  }
+
+  const KEY_WIDTHS = ['w100','w125','w150','w175','w200','w225','w275','w625']
+  function cycleWidth(ri: number, ki: number) {
+    setCustomLayout(prev => {
+      const next = prev.map(r => [...r])
+      const key = { ...next[ri][ki] }
+      const current = KEY_WIDTHS.indexOf(key.w ?? 'w100')
+      key.w = KEY_WIDTHS[(current + 1) % KEY_WIDTHS.length]
+      next[ri][ki] = key
+      return next
+    })
+  }
+
   const selectedKey = selected ? getKey(activeLayer, selected.rowIndex, selected.keyIndex) : null
 
   return (
@@ -176,16 +218,20 @@ export default function App() {
               const file = e.target.files?.[0]
               if (!file) return
               try {
-                const loaded = await importKeymap(file)
+                const { keymap: loaded, customLayout: loadedLayout } = await importKeymap(file)
                 setKeymap(loaded)
+                if (loadedLayout) setCustomLayout(loadedLayout)
               } catch {
                 alert('Invalid keymap file')
               }
               e.target.value = ''
             }}
           />
+          <button className="btn" onClick={() => setEditMode(e => !e)}>
+            {editMode ? 'Done Editing' : 'Edit Layout'}
+          </button>
           <button className="btn" onClick={() => fileInputRef.current?.click()}>Import Keymap</button>
-          <button className="btn" onClick={() => exportKeymap(keymap)}>Save Keymap</button>
+          <button className="btn" onClick={() => exportKeymap(keymap, customLayout)}>Save Keymap</button>
           <button className="btn primary">⚡ Flash</button>
         </div>
       </div>
@@ -209,24 +255,44 @@ export default function App() {
       <div className="main">
         <div className="canvas-area">
           <div className="keyboard">
-            {LAYOUT.map((row, ri) => (
+            {customLayout.map((row, ri) => (
               <div key={ri} className="kb-row">
                 {row.map((_, ki) => {
-                  const key = getKey(activeLayer, ri, ki)
+                  const key = editMode ? customLayout[ri][ki] : getKey(activeLayer, ri, ki)
                   const isSelected = selected?.rowIndex === ri && selected?.keyIndex === ki
                   return (
                     <div
                       key={ki}
                       className={`key${key.w ? ' ' + key.w : ''}${isSelected ? ' selected' : ''}${key.s ? ' has-dual' : ''}`}
-                      onClick={() => setSelected({ rowIndex: ri, keyIndex: ki })}
+                      onClick={() => editMode ? null : setSelected({ rowIndex: ri, keyIndex: ki })}
                     >
-                      {key.s && <div className="key-shift">{key.s}</div>}
-                      <div className="key-main">{key.l}</div>
+                      {editMode ? (
+                        <>
+                          <button className="edit-remove" onClick={() => removeKey(ri, ki)}>✕</button>
+                          <div className="edit-width" onClick={() => cycleWidth(ri, ki)}>{key.w ?? '1u'}</div>
+                        </>
+                      ) : (
+                        <>
+                          {key.s && <div className="key-shift">{key.s}</div>}
+                          <div className="key-main">{key.l}</div>
+                        </>
+                      )}
                     </div>
                   )
                 })}
+                {editMode && (
+                  <div className="edit-row-actions">
+                    <button className="btn" onClick={() => addKey(ri)}>+ Key</button>
+                    <button className="btn" onClick={() => removeRow(ri)}>− Row</button>
+                  </div>
+                )}
               </div>
             ))}
+            {editMode && (
+              <div className="edit-add-row">
+                <button className="btn" onClick={addRow}>+ Add Row</button>
+              </div>
+            )}
           </div>
         </div>
 
