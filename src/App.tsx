@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { exportKeymap, importKeymap } from './utils/keymapIO'
 import './App.css'
 
 const LAYOUT = [
@@ -136,6 +137,7 @@ export default function App() {
   const [selected, setSelected] = useState<SelectedKey | null>(null)
   const [search, setSearch] = useState('')
   const [keymap, setKeymap] = useState<Keymap>({})
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   function getKey(layer: number, ri: number, ki: number): KeyDef {
     return keymap[layer]?.[ri]?.[ki] ?? LAYOUT[ri][ki]
@@ -165,8 +167,25 @@ export default function App() {
       <div className="topbar">
         <div className="logo">Exion<span> Keyboard Editor</span></div>
         <div className="top-actions">
-          <button className="btn">Import Layout</button>
-          <button className="btn">Save Keymap</button>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".json"
+            style={{ display: 'none' }}
+            onChange={async (e) => {
+              const file = e.target.files?.[0]
+              if (!file) return
+              try {
+                const loaded = await importKeymap(file)
+                setKeymap(loaded)
+              } catch {
+                alert('Invalid keymap file')
+              }
+              e.target.value = ''
+            }}
+          />
+          <button className="btn" onClick={() => fileInputRef.current?.click()}>Import Keymap</button>
+          <button className="btn" onClick={() => exportKeymap(keymap)}>Save Keymap</button>
           <button className="btn primary">⚡ Flash</button>
         </div>
       </div>
